@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using FilesAPI.Models;
 using Microsoft.EntityFrameworkCore;
-using FilesAPI.Models;
 
-    public class FilesContext : DbContext
+public class FilesContext : DbContext
+{
+    public FilesContext(DbContextOptions<FilesContext> options)
+        : base(options)
     {
-        public FilesContext (DbContextOptions<FilesContext> options)
-            : base(options)
-        {
-        }
-
-        public DbSet<FilesAPI.Models.Termometro>? Termometro { get; set; }
     }
+
+    public DbSet<Termometro>? Termometro { get; set; }
+    public DbSet<Aula>? Aula { get; set; }
+}
