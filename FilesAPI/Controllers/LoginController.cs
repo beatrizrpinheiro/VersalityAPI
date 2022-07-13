@@ -25,17 +25,11 @@ namespace FilesAPI.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] Login login)
         {
-            try
-            {
-                _dbContext.Login.Add(login);
-                _dbContext.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{e.Message}");  
-            }
+            var usuario = _dbContext.Login.FirstOrDefault(x => x.Usuario == login.Usuario);
+            if (usuario == null || usuario.Senha != login.Senha)
+                return BadRequest();
 
-            return Ok(login);
+            return Ok();
         }
     }
 }
