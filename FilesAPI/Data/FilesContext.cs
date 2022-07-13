@@ -10,4 +10,5 @@ public class FilesContext : DbContext
 
     public DbSet<Termometro>? Termometro { get; set; }
     public DbSet<Aula>? Aula { get; set; }
+    public DbSet<Login> Login { get; set; }
 }
